@@ -39,8 +39,9 @@ const AddImage = () => {
             setSuccess("Image uploaded successfully!");
             setError("");
 
+            // Delay the redirection for 2 seconds to let the success message display
             setTimeout(() => {
-                navigate("/"); 
+                navigate("/"); // Redirect to the home page after success
             }, 2000);
         } catch (err) {
             setError(err.response?.data?.error || "Something went wrong!");

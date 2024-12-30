@@ -14,9 +14,9 @@ const upload = multer({ storage: storage });
 router.post("/:teamId", upload.single("image"), async (req, res) => {
 	try {
 		const file = req.file;
-		if (!file) {
-			return res.status(400).json({ error: "No file uploaded." });
-		}
+		// if (!file) {
+		// 	return res.status(400).json({ error: "No file uploaded." });
+		// }
 
 		await addMember(req, res);
 	} catch (error) {
