@@ -1,12 +1,9 @@
-// utils/s3Upload.js
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import dotenv from 'dotenv';
 
-// Ensure environment variables are loaded
 dotenv.config();
 
-// Create the S3 client with explicit credentials
 const s3Client = new S3Client({
 	region: process.env.AWS_REGION,
 	credentials: {
@@ -17,7 +14,6 @@ const s3Client = new S3Client({
 
 export const uploadToS3 = async (file, bucketName, key) => {
 	try {
-		// Add validation
 		if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
 			throw new Error("AWS credentials missing");
 		}
@@ -30,7 +26,6 @@ export const uploadToS3 = async (file, bucketName, key) => {
 			throw new Error("S3 bucket name not provided");
 		}
 
-		// Log configuration (remove in production)
 		console.log('Upload attempt with:', {
 			bucket: bucketName,
 			key: key,
@@ -52,7 +47,6 @@ export const uploadToS3 = async (file, bucketName, key) => {
 
 		const result = await upload.done();
 		
-		// Construct the URL manually since result.Location might not be available
 		const url = `https://${bucketName}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
 		return url;
 	} catch (error) {

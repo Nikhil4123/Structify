@@ -14,7 +14,6 @@ export const addTeam = async (req, res) => {
 };
 
 
-// Get all teams
 export const getAllTeams = async (req, res) => {
 	try {
 		const teams = await Team.find().populate("members");
@@ -24,7 +23,6 @@ export const getAllTeams = async (req, res) => {
 	}
 };
 
-// Get specific team by ID
 export const getTeamById = async (req, res) => {
 	try {
 		const { teamId } = req.params;

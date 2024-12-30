@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddImage = () => {
-    const { memberId } = useParams(); // Get memberId from URL params
+    const { memberId } = useParams(); 
     const [image, setImage] = useState(null);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -38,9 +39,8 @@ const AddImage = () => {
             setSuccess("Image uploaded successfully!");
             setError("");
 
-            // Delay the redirection for 2 seconds to let the success message display
             setTimeout(() => {
-                navigate("/"); // Redirect to the home page after success
+                navigate("/"); 
             }, 2000);
         } catch (err) {
             setError(err.response?.data?.error || "Something went wrong!");

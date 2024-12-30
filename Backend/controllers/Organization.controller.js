@@ -22,11 +22,10 @@ export const getOrganizationById = async (req, res) => {
 	try {
 		const { orgId } = req.params;
 
-		// Populate teams and then members within teams
 		const organization = await Organization.findById(orgId).populate({
-			path: "teams", // Populate teams
+			path: "teams", 
 			populate: {
-				path: "members", // Populate members within teams
+				path: "members", 
 			},
 		});
 
